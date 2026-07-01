@@ -1,15 +1,266 @@
-# Microsoft Sentinel Lab
+# Microsoft Sentinel SOC Investigation Lab
 
-### 🔐 Azure Honeypot Deployment & SIEM Integration (Microsoft Sentinel)
-A cloud-based honeypot deployment designed to capture, analyze, and visualize real-world RDP brute-force attacks using Azure Sentinel.
+### 🔐 Azure Honeypot Deployment | Threat Detection | Incident Investigation | Microsoft Sentinel
 
-## 🛠️ Project Overview
+This project demonstrates the responsibilities of a Tier 1 Security Operations Center (SOC) Analyst by deploying a cloud-based Windows honeypot in Microsoft Azure, collecting real-world attack telemetry, investigating malicious login activity, and documenting the complete incident investigation process using Microsoft Sentinel.
 
-### 🚀 Deployed a live honeypot in Microsoft Azure to emulate vulnerable infrastructure and attract malicious activity.
+Instead of simply collecting attack logs, this project focuses on how a SOC analyst monitors alerts, investigates incidents, performs triage, and documents findings for escalation.
 
-### 🔐 Configured Network Security Groups (NSGs) and host-level firewalls to control access while maximizing log capture.
 
-### 📊 Set up an integrated SIEM pipeline by forwarding logs to Azure Log Analytics Workspace, connected to Microsoft Sentinel for real-time threat monitoring.
+---
+
+## 🛠️ Project Objectives
+
+### 🚀 - The primary goal of this projects is to simulate real-world SOC operations by:
+
+### ☁️ - Deploying a Windows Honeypot in Microsoft Azure
+
+### 📥 - Collecting real attacker telemetry
+
+### 🖥️ - Monitoring security events inside Microsoft Sentinel
+
+### 🔍 - Investigating brute-force attacks using KQL
+
+### 👹 - Identifying attacker behavior
+
+### 📄 - Creating incident documentation
+
+### 🛡️ - Demonstrating Tier 1 SOC investigation workflow
+
+
+# 🛡️ SOC Responsibilities Demonstrated
+
+## 🖥️ Security Monitoring
+
+- 👁️ Continuously monitored Windows Security Events using Microsoft Sentinel.
+- 📥 Collected authentication logs from an exposed Azure Virtual Machine.
+
+---
+## 🚨 Alert Triage
+
+Investigated repeated failed Remote Desktop Protocol (RDP) authentication attempts.
+
+Performed initial analysis by reviewing:
+
+- 🌐 Source IP Address
+- 👤 Username targeted
+- 🔢 Failed Login Count
+- ⏰ Time of Activity
+- 🌍 Geographic Origin
+
+---
+
+## 🔍 Incident Investigation
+
+Performed investigation of:
+
+- 🆔 Event ID 4625 (Failed Logon)
+- 📊 Login frequency
+- 🔨 Brute-force attack behaviour
+- 🏳️ Source countries
+- 🛑 Suspicious IP addresses
+
+---
+
+## 🏹 Threat Hunting
+
+Developed KQL queries to identify:
+
+- 🔝 Top attacking IP addresses
+- 🎯 Most targeted usernames
+- 🗺️ Login attempts by country
+- ⚡ High frequency authentication failures
+
+---
+## 📄 Incident Documentation
+
+Documented findings using a structured investigation report including:
+
+- 📝 Detection Summary
+- 🏷️ Indicators of Compromise (IOCs)
+- 🧠 Analysis
+- ⚠️ Risk Assessment
+- 🛠️ Recommended Mitigation
+
+---
+
+## ⚡ Escalation Decision
+
+Established escalation criteria for potential credential compromise based on:
+
+- 📈 Excessive authentication failures
+- 🔑 Successful login after repeated failures
+- 👥 Multiple usernames targeted from one IP
+- 🚩 High-risk geographic source
+
+---
+
+# 🏗️ Architecture
+
+```
+Azure Virtual Machine
+         ↓
+Windows Security Events
+         ↓
+Azure Monitor Agent
+         ↓
+Log Analytics Workspace
+         ↓
+Microsoft Sentinel
+         ↓
+ KQL Investigation
+         ↓
+  Incident Report
+
+```
+---
+
+# 🛠️ Technologies Used
+
+## ☁️ Cloud
+
+- 🔷 Microsoft Azure
+- 💻 Azure Virtual Machine
+- 📊 Log Analytics Workspace
+- 🛡️ Microsoft Sentinel
+
+---
+
+## 🔒 Security
+
+- 🪵 Windows Event Viewer
+- 🤖 Azure Monitor Agent
+- 🧱 Network Security Groups
+- 🛡️ Windows Firewall
+
+---
+
+## 💻 Languages
+
+- 📜 PowerShell
+- 🔍 Kusto Query Language (KQL)
+
+## 🔌 APIs
+
+- 🌐 ipgeolocation.io
+
+---
+
+# 🗂️ Event IDs Investigated
+
+| Event ID | Description |
+|----------|-------------|
+| ❌ 4625  | Failed Login |
+| ✅ 4624  | Successful Login (optional investigation) |
+
+---
+
+# 🔄 Investigation Workflow
+
+1. 🚀 Deploy Azure Honeypot
+2. 📦 Collect Windows Security Logs
+3. ➡️ Forward logs into Sentinel
+4. 🔍 Query logs using KQL
+5. 🌐 Enrich attacker IP with Geo-IP information
+6. 📊 Visualize attacks on Sentinel Workbook
+7. 📝 Document investigation findings
+8. 🛠️ Recommend mitigation strategies
+
+---
+
+# 📊 Dashboard
+
+The Sentinel Workbook visualizes attack activity across multiple countries using enriched Geo-IP data.
+
+![Attack Map](microsoft-sentinel3.png)
+
+---
+
+# 🌍 Geo-IP Investigation
+
+Each attacker IP address is enriched using ipgeolocation.io API to identify:
+
+- 🏳️ Country
+- 📍 Region
+- 🏢 ISP
+- 🗺️ Coordinates
+- 🏷️ ASN Information
+
+  ![Geo-IP](microsoft-sentinel4.png)
+---
+
+
+# 🔑 Key Findings
+
+- ⚡ Internet-facing Windows systems receive automated brute-force attacks within hours.
+- 🌍 Most attacks originate from globally distributed IP addresses.
+- 🛑 Repeated failed authentication attempts are common indicators of credential attacks.
+- 🚀 Microsoft Sentinel enables efficient investigation using KQL and centralized log collection.
+
+---
+# 🧠 Lessons Learned 
+
+This project improved my understanding of:
+
+- 🛡️ Microsoft Sentinel
+- 🖥️ Security Monitoring
+- 🚨 Alert Triage
+- 🏹 Threat Hunting
+- 🔍 Incident Investigation
+- ✍️ KQL Query Development
+- 📄 SOC Documentation
+- ⚡ Incident Escalation
+
+---
+
+# 🚀 Future Improvements
+
+- 🛡️ Microsoft Defender XDR Integration
+- ⚙️ Analytics Rules
+- 🤖 Automated Playbooks
+- ⚡ SOAR Automation
+- 🗺️ MITRE ATT&CK Mapping
+- ⚠️ Incident Severity Classification
+- 📊 Automated Alert Prioritization
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### 🕵️‍♂️ Queried security logs using KQL (Kusto Query Language) to detect patterns in failed RDP logins (Event ID 4625) and investigate anomalous login behavior.
 ### 🌍 Enriched log data with Geo-IP context using ipgeolocation.io APIs, identifying the origin of attack traffic.
