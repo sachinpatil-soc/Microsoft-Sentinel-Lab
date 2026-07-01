@@ -27,6 +27,8 @@ Instead of simply collecting attack logs, this project focuses on how a SOC anal
 
 ### 🛡️ - Demonstrating Tier 1 SOC investigation workflow
 
+---
+
 
 # 🛡️ SOC Responsibilities Demonstrated
 
@@ -35,7 +37,6 @@ Instead of simply collecting attack logs, this project focuses on how a SOC anal
 - 👁️ Continuously monitored Windows Security Events using Microsoft Sentinel.
 - 📥 Collected authentication logs from an exposed Azure Virtual Machine.
 
----
 ## 🚨 Alert Triage
 
 Investigated repeated failed Remote Desktop Protocol (RDP) authentication attempts.
@@ -48,7 +49,7 @@ Performed initial analysis by reviewing:
 - ⏰ Time of Activity
 - 🌍 Geographic Origin
 
----
+
 
 ## 🔍 Incident Investigation
 
@@ -60,7 +61,7 @@ Performed investigation of:
 - 🏳️ Source countries
 - 🛑 Suspicious IP addresses
 
----
+
 
 ## 🏹 Threat Hunting
 
@@ -71,7 +72,7 @@ Developed KQL queries to identify:
 - 🗺️ Login attempts by country
 - ⚡ High frequency authentication failures
 
----
+
 ## 📄 Incident Documentation
 
 Documented findings using a structured investigation report including:
@@ -82,7 +83,6 @@ Documented findings using a structured investigation report including:
 - ⚠️ Risk Assessment
 - 🛠️ Recommended Mitigation
 
----
 
 ## ⚡ Escalation Decision
 
@@ -94,6 +94,32 @@ Established escalation criteria for potential credential compromise based on:
 - 🚩 High-risk geographic source
 
 ---
+
+# Project Architecture
+
+```mermaid
+flowchart TD
+
+A[Internet Attackers] --> B[Azure Windows Virtual Machine<br/>Honeypot]
+
+B --> C[Windows Security Logs]
+
+C --> D[Azure Monitor Agent]
+
+D --> E[Azure Log Analytics Workspace]
+
+E --> F[Microsoft Sentinel]
+
+F --> G[KQL Threat Hunting]
+
+G --> H[Incident Investigation]
+
+H --> I[Threat Intelligence<br/>Geo-IP Enrichment]
+
+I --> J[SOC Incident Report]
+
+J --> K[Playbook / Escalation]
+```
 
 # 🏗️ Architecture
 
@@ -124,7 +150,7 @@ Microsoft Sentinel
 - 📊 Log Analytics Workspace
 - 🛡️ Microsoft Sentinel
 
----
+
 
 ## 🔒 Security
 
@@ -133,7 +159,7 @@ Microsoft Sentinel
 - 🧱 Network Security Groups
 - 🛡️ Windows Firewall
 
----
+
 
 ## 💻 Languages
 
@@ -144,7 +170,7 @@ Microsoft Sentinel
 
 - 🌐 ipgeolocation.io
 
----
+
 
 # 🗂️ Event IDs Investigated
 
@@ -153,7 +179,7 @@ Microsoft Sentinel
 | ❌ 4625  | Failed Login |
 | ✅ 4624  | Successful Login (optional investigation) |
 
----
+
 
 # 🔄 Investigation Workflow
 
@@ -166,7 +192,7 @@ Microsoft Sentinel
 7. 📝 Document investigation findings
 8. 🛠️ Recommend mitigation strategies
 
----
+
 
 # 📊 Dashboard
 
@@ -174,7 +200,7 @@ The Sentinel Workbook visualizes attack activity across multiple countries using
 
 ![Attack Map](microsoft-sentinel3.png)
 
----
+
 
 # 🌍 Geo-IP Investigation
 
@@ -187,7 +213,7 @@ Each attacker IP address is enriched using ipgeolocation.io API to identify:
 - 🏷️ ASN Information
 
   ![Geo-IP](microsoft-sentinel4.png)
----
+
 
 
 # 🔑 Key Findings
@@ -197,7 +223,7 @@ Each attacker IP address is enriched using ipgeolocation.io API to identify:
 - 🛑 Repeated failed authentication attempts are common indicators of credential attacks.
 - 🚀 Microsoft Sentinel enables efficient investigation using KQL and centralized log collection.
 
----
+
 # 🧠 Lessons Learned 
 
 This project improved my understanding of:
@@ -211,7 +237,7 @@ This project improved my understanding of:
 - 📄 SOC Documentation
 - ⚡ Incident Escalation
 
----
+
 
 # 🚀 Future Improvements
 
@@ -263,24 +289,13 @@ This project improved my understanding of:
 
 
 ### 🕵️‍♂️ Queried security logs using KQL (Kusto Query Language) to detect patterns in failed RDP logins (Event ID 4625) and investigate anomalous login behavior.
+
 ### 🌍 Enriched log data with Geo-IP context using ipgeolocation.io APIs, identifying the origin of attack traffic.
 ![image alt](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/7749a3e6b786b367bc53243fa22d9e5fcb4013d5/microsoft-sentinel4.png)
 ### 📈 Built a custom Sentinel Workbook to visualize attack sources on a world map and assist in threat hunting and incident response.
 
 
-## ⚙️ Tools & Technologies
-- Languages: PowerShell
-- Utilities & APIs:
-- ipgeolocation.io – for attacker geolocation data
-- Azure Log Analytics
-- Microsoft Sentinel
-- Security IDs Monitored:
-- Event ID 4625 – Failed RDP login attempts
 
-
-## 🧪 Features & Outputs
-- 🔄 PowerShell Script: Parses Windows Event Viewer logs for failed RDP attempts and queries IP geolocation data.
-- 🌐 Geolocation Visualization: Plots attackers’ origin on a world map using enriched custom logs in Sentinel.
 
 ### 📌 Observations:
 #### Live attack data shows repeated brute-force attempts from countries like USA, Europ, Pakistan and Australia all plotted in near real-time.
