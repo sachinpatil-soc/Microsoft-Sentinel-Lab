@@ -9,23 +9,20 @@ Instead of simply collecting attack logs, this project focuses on how a SOC anal
 
 ---
 
-## 🛠️ Project Objectives
+# 🛠️ Project Objectives
 
-### 🚀 - The primary goal of this projects is to simulate real-world SOC operations by:
+The primary goal of this project is to simulate the day-to-day responsibilities of a Tier 1 Security Operations Center (SOC) Analyst by following a complete incident investigation workflow.
 
-### ☁️ - Deploying a Windows Honeypot in Microsoft Azure
-
-### 📥 - Collecting real attacker telemetry
-
-### 🖥️ - Monitoring security events inside Microsoft Sentinel
-
-### 🔍 - Investigating brute-force attacks using KQL
-
-### 👹 - Identifying attacker behavior
-
-### 📄 - Creating incident documentation
-
-### 🛡️ - Demonstrating Tier 1 SOC investigation workflow
+1. ☁️ Deploy a Windows Honeypot in Microsoft Azure
+2. 📥 Collect real-world attacker telemetry
+3. 🖥️ Monitor security events using Microsoft Sentinel
+4. 🔍 Investigate brute-force attacks using Kusto Query Language (KQL)
+5. 👹 Identify attacker behavior and attack patterns
+6. 📄 Document the incident investigation
+7. 🛡️ Execute a Tier 1 Incident Response Playbook
+8. 🚨 Demonstrate the Incident Escalation process from Tier 1 to Tier 2
+9. 📊 Produce threat hunting findings and security observations
+10. ✅ Simulate an enterprise SOC investigation workflow
 
 ---
 
