@@ -1,4 +1,4 @@
-# Incident Report
+# 🔍 ** Incident Report **
 
 ## Incident Summary
 
