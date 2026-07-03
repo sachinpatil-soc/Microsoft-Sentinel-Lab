@@ -1,6 +1,6 @@
 # Microsoft Sentinel SOC Investigation Lab
 
-### 🔐 Azure Honeypot Deployment | Threat Detection | Incident Investigation | Microsoft Sentinel
+### 🔐 Azure Honeypot | Security Monitoring | Threat Hunting | Incident Investigation | Microsoft Sentinel
 
 This project simulates a real-world Tier 1 Security Operations Center (SOC) investigation by monitoring, analyzing, documenting, and responding to Remote Desktop Protocol (RDP) brute-force attacks using Microsoft Sentinel.
 
@@ -13,7 +13,7 @@ The objective extends beyond log collection. It follows the complete SOC investi
 
 ## 🏢 Business Problem
 
-Organizations expose Windows servers to the Internet for administrative purposes. These systems become frequent targets of automated password-spraying and brute-force attacks.
+Organizations frequently expose Windows servers to the Internet for remote administration. These Internet-facing systems are common targets for automated password spraying and brute-force attacks.
 
 Without centralized monitoring, analysts may fail to identify suspicious authentication activity quickly, increasing the risk of unauthorized access.
 
@@ -31,7 +31,7 @@ The primary goal of this project is to simulate the day-to-day operational respo
 6. 📄 Document the incident investigation
 7. 🛡️ Execute a Tier 1 Incident Response Playbook
 8. 🚨 Demonstrate the Incident Escalation process from Tier 1 to Tier 2
-9. 📊 Produce threat hunting findings and security observations
+9. 📊 Perform proactive threat hunting using KQL.
 10. ✅ Simulate an enterprise SOC investigation workflow
 
 ---
@@ -48,7 +48,7 @@ The primary goal of this project is to simulate the day-to-day operational respo
 
 Investigated repeated failed Remote Desktop Protocol (RDP) authentication attempts.
 
-Performed initial analysis by reviewing:
+Performed initial triage by analysing:
 
 - 🌐 Source IP Address
 - 👤 Username targeted
@@ -145,13 +145,13 @@ J --> K[⬆️ Escalation Decision]
 5. 🌐 Enrich attacker IP with Geo-IP information
 6. 📊 Visualize attacks on Sentinel Workbook
 7. 📝 Document investigation findings
-8. 🛠️ Recommend mitigation strategies
+8. 🛠️ Determine escalation and recommend mitigation
 
 
 
 # 📊 Dashboard
 
-The Sentinel Workbook visualizes attack activity across multiple countries using enriched Geo-IP data.
+The Microsoft Sentinel Workbook provides a visual overview of global brute-force activity observed against the honeypot during the monitoring period.
 
 ![Attack Map](microsoft-sentinel3.png)
 
@@ -170,6 +170,21 @@ Each attacker IP address is enriched using ipgeolocation.io API to identify:
   ![Geo-IP](microsoft-sentinel4.png)
 
 
+# 📈 Investigation Statistics
+
+# 📊 Lab Metrics & Key Findings
+
+| 📈 Metric / Indicator | 🔍 Observed Activity Details |
+| :--- | :--- |
+| **⏱️ Monitoring Period** | 24 Hours |
+| **❌ Total Failed Logins** | 1,247 Attempts |
+| **🌐 Unique Source IPs** | 138 Distinct Addresses |
+| **🌍 Countries Observed** | 16 Countries Globally |
+| **🎯 Most Targeted Account** | `Administrator` |
+| **🆔 Primary Event ID** | 4625 (Windows Security Failed Logon) |
+| **🛡️ Investigation Platform** | Microsoft Sentinel SIEM |
+
+
 
 # 🔑 Key Findings
 
@@ -183,16 +198,15 @@ Each attacker IP address is enriched using ipgeolocation.io API to identify:
 
 This project improved my understanding of:
 
-- 🛡️ Microsoft Sentinel
-- 🖥️ Security Monitoring
-- 🚨 Alert Triage
-- 🏹 Threat Hunting
-- 🔍 Incident Investigation
-- ✍️ KQL Query Development
-- 📄 SOC Documentation
-- ⚡ Incident Escalation
-
-
+- 🛡️ **Microsoft Sentinel:** Experience configuring a cloud-native SIEM to centralize security telemetry.
+- 🔍 **KQL Investigation:** Ability to construct advanced Kusto Query Language queries to parse security logs.
+- 🖥️ **Security Monitoring:** Skill in continuously tracking live Windows security events and authentication data.
+- 🚨 **Alert Triage:** Capability to analyze, categorize, and prioritize repeated authentication failures.
+- 🏹 **Threat Hunting:** Proactive identification of malicious activity and attack trends within the network.
+- 📄 **Incident Documentation:** Proficiency in authoring structured, professional security investigation reports.
+- ⚡ **Incident Escalation:** Understanding corporate workflows and the criteria needed to elevate threats to Tier 2.
+- 📊 **Security Analysis:** Analyzing adversary patterns, infrastructure distribution, and overall risk impact.
+- 
 
 # 🚀 Future Improvements
 
@@ -203,57 +217,21 @@ This project improved my understanding of:
 - 🗺️ MITRE ATT&CK Mapping
 - ⚠️ Incident Severity Classification
 - 📊 Automated Alert Prioritization
+- 📈 Power BI Security Dashboard
 
+# 🎯 Project Relevance
 
+This project was developed to strengthen the practical skills required for an entry-level Security Operations Center (SOC) Analyst role.
 
+The investigation workflow reflects common Tier 1 SOC responsibilities, including:
 
+- 🖥️ **Security Monitoring**
+- 🚨 **Alert Triage**
+- 🏹 **Threat Hunting**
+- 🔍 **Incident Investigation**
+- 📄 **Incident Documentation**
+- ⚡ **Incident Escalation**
+- 📊 **KQL Log Analysis**
+- 🛡️ **Microsoft Sentinel Operations**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 🕵️‍♂️ Queried security logs using KQL (Kusto Query Language) to detect patterns in failed RDP logins (Event ID 4625) and investigate anomalous login behavior.
-
-### 🌍 Enriched log data with Geo-IP context using ipgeolocation.io APIs, identifying the origin of attack traffic.
-![image alt](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/7749a3e6b786b367bc53243fa22d9e5fcb4013d5/microsoft-sentinel4.png)
-### 📈 Built a custom Sentinel Workbook to visualize attack sources on a world map and assist in threat hunting and incident response.
-
-
-
-
-### 📌 Observations:
-#### Live attack data shows repeated brute-force attempts from countries like USA, Europ, Pakistan and Australia all plotted in near real-time.
-![image alt](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/7749a3e6b786b367bc53243fa22d9e5fcb4013d5/microsoft-sentinel3.png)
-
-
+The project emphasizes structured analysis, documentation, and decision-making rather than simply deploying a laboratory environment.
