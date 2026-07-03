@@ -2,16 +2,26 @@
 
 ### 🔐 Azure Honeypot Deployment | Threat Detection | Incident Investigation | Microsoft Sentinel
 
-This project demonstrates the responsibilities of a Tier 1 Security Operations Center (SOC) Analyst by deploying a cloud-based Windows honeypot in Microsoft Azure, collecting real-world attack telemetry, investigating malicious login activity, and documenting the complete incident investigation process using Microsoft Sentinel.
+This project simulates a real-world Tier 1 Security Operations Center (SOC) investigation by monitoring, analyzing, documenting, and responding to Remote Desktop Protocol (RDP) brute-force attacks using Microsoft Sentinel.
 
-Instead of simply collecting attack logs, this project focuses on how a SOC analyst monitors alerts, investigates incidents, performs triage, and documents findings for escalation.
+The objective extends beyond log collection. It follows the complete SOC investigation lifecycle—from security monitoring and alert triage to threat hunting, incident documentation, and playbook-driven response—reflecting workflows commonly used in enterprise Security Operations Centers.
 
 
 ---
 
-# 🛠️ Project Objectives
+ # 🏢 Business Problem & 🛠️ Project Objectives
 
-The primary goal of this project is to simulate the day-to-day responsibilities of a Tier 1 Security Operations Center (SOC) Analyst by following a complete incident investigation workflow.
+## 🏢 Business Problem
+
+Organizations expose Windows servers to the Internet for administrative purposes. These systems become frequent targets of automated password-spraying and brute-force attacks.
+
+Without centralized monitoring, analysts may fail to identify suspicious authentication activity quickly, increasing the risk of unauthorized access.
+
+This project demonstrates how Microsoft Sentinel can be used to detect, investigate, prioritize, and document these attacks before they become successful compromises.
+
+## 🛠️ Project Objectives
+
+The primary goal of this project is to simulate the day-to-day operational responsibilities of a Tier 1 SOC Analyst by executing a structured, end-to-end incident investigation workflow:
 
 1. ☁️ Deploy a Windows Honeypot in Microsoft Azure
 2. 📥 Collect real-world attacker telemetry
@@ -92,90 +102,38 @@ Established escalation criteria for potential credential compromise based on:
 
 ---
 
-# Project Architecture
+# 🏗️ Project Architecture
 
 ```mermaid
-flowchart TD
-
-A[Internet Attackers] --> B[Azure Windows Virtual Machine<br/>Honeypot]
-
-B --> C[Windows Security Logs]
-
-C --> D[Azure Monitor Agent]
-
-D --> E[Azure Log Analytics Workspace]
-
-E --> F[Microsoft Sentinel]
-
-F --> G[KQL Threat Hunting]
-
-G --> H[Incident Investigation]
-
-H --> I[Threat Intelligence<br/>Geo-IP Enrichment]
-
-I --> J[SOC Incident Report]
-
-J --> K[Playbook / Escalation]
+graph TD
+A[🌐 Internet Attackers] --> B[☁️ Azure Windows VM<br/>Honeypot]
+B --> C[📝 Windows Security Events]
+C --> D[📡 Azure Monitor Agent]
+D --> E[📊 Log Analytics Workspace]
+E --> F[🛡️ Microsoft Sentinel]
+F --> G[🔍 KQL Threat Hunting]
+G --> H[📄 Incident Investigation]
+H --> I[📋 SOC Incident Report]
+I --> J[🚨 Tier 1 Response Playbook]
+J --> K[⬆️ Escalation Decision]
 ```
 
-# 🏗️ Architecture
 
-```
-Azure Virtual Machine
-         ↓
-Windows Security Events
-         ↓
-Azure Monitor Agent
-         ↓
-Log Analytics Workspace
-         ↓
-Microsoft Sentinel
-         ↓
- KQL Investigation
-         ↓
-  Incident Report
-
-```
 ---
 
 # 🛠️ Technologies Used
 
-## ☁️ Cloud
-
-- 🔷 Microsoft Azure
-- 💻 Azure Virtual Machine
-- 📊 Log Analytics Workspace
-- 🛡️ Microsoft Sentinel
-
-
-
-## 🔒 Security
-
-- 🪵 Windows Event Viewer
-- 🤖 Azure Monitor Agent
-- 🧱 Network Security Groups
-- 🛡️ Windows Firewall
-
-
-
-## 💻 Languages
-
-- 📜 PowerShell
-- 🔍 Kusto Query Language (KQL)
-
-## 🔌 APIs
-
-- 🌐 ipgeolocation.io
-
-
-
-# 🗂️ Event IDs Investigated
-
-| Event ID | Description |
-|----------|-------------|
-| ❌ 4625  | Failed Login |
-| ✅ 4624  | Successful Login (optional investigation) |
-
+| 📁 Category | 🛠️ Technologies Used |
+| :--- | :--- |
+| **☁️ Cloud Infrastructure** | • Microsoft Azure<br>• Azure Virtual Machine (VM) |
+| **🛡️ SIEM** | • Microsoft Sentinel |
+| **👁️ Monitoring** | • Azure Monitor Agent |
+| **📊 Log Management** | • Azure Log Analytics Workspace |
+| **🔒 Network Security** | • Azure Network Security Groups (NSG)<br>• Windows Defender Firewall |
+| **📜 Scripting** | • PowerShell |
+| **🔍 Query Language** | • Kusto Query Language (KQL) |
+| **🌐 Threat Intelligence** | • Virus Total |
+| **🖥️ Operating System** | • Windows Server |
 
 
 # 🔄 Investigation Workflow
