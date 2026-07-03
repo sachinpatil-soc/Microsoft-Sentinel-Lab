@@ -235,3 +235,21 @@ The investigation workflow reflects common Tier 1 SOC responsibilities, includin
 - 🛡️ **Microsoft Sentinel Operations**
 
 The project emphasizes structured analysis, documentation, and decision-making rather than simply deploying a laboratory environment.
+
+# 🎯 Investigation Scope
+
+This investigation focuses on identifying and analyzing brute-force authentication attempts against an Internet-facing Windows Server hosted in Microsoft Azure.
+
+### 🔍 Investigation Scope
+
+The scope of the investigation includes:
+* 🖥️ **Monitoring** Windows security events.
+* 🛑 **Detecting** failed RDP authentication attempts (Event ID 4625).
+* 🔍 **Identifying** attacker IP addresses.
+* 🌐 **Enriching** IP addresses with Geo-IP context.
+* 🎯 **Performing** KQL-based threat hunting.
+* ⚠️ **Assessing** potential Indicators of Compromise (IOCs).
+* 📝 **Documenting** findings for incident escalation.
+
+
+This project does not perform malware analysis or digital forensics. Its objective is to simulate the responsibilities of a Tier 1 SOC Analyst during the initial stages of incident detection and investigation.
