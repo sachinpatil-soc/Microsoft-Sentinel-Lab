@@ -31,7 +31,7 @@ The primary goal of this project is to simulate the day-to-day operational respo
 6. 📄 Document the incident investigation
 7. 🛡️ Execute a Tier 1 Incident Response Playbook
 8. 🚨 Demonstrate the Incident Escalation process from Tier 1 to Tier 2
-9. 📊 Perform proactive threat hunting using KQL.
+9. 📊 Perform proactive threat hunting to identify attacker behaviour and suspicious authentication patterns
 10. ✅ Simulate an enterprise SOC investigation workflow
 
 ---
