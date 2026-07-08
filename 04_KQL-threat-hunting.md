@@ -13,5 +13,10 @@
 * | where FailedAttempts >= 10
 * | order by FaildAttemts desc
 
-Purpose:
+- Purpose:
 Identify IP addresses generating the highest number of failed authentication attempts.
+
+
+![image alt](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/718001199273600038bd60c302c6219ea6982a91/screenshots/query1-top-attacking-ip.png)
+
+---
