@@ -148,28 +148,6 @@ J --> K[⬆️ Escalation Decision]
 8. 🛠️ Determine escalation and recommend mitigation
 
 
-
-# 📊 Dashboard
-
-The Microsoft Sentinel Workbook provides a visual overview of global brute-force activity observed against the honeypot during the monitoring period.
-
-![Attack Map](microsoft-sentinel3.png)
-
-
-
-# 🌍 Geo-IP Investigation
-
-Each attacker IP address is enriched using ipgeolocation.io API to identify:
-
-- 🏳️ Country
-- 📍 Region
-- 🏢 ISP
-- 🗺️ Coordinates
-- 🏷️ ASN Information
-
-  ![Geo-IP](microsoft-sentinel4.png)
-
-
 # 📈 Investigation Statistics
 
 # 📊 Lab Metrics & Key Findings
