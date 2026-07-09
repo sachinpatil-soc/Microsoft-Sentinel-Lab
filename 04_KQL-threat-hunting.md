@@ -167,17 +167,87 @@ SecurityEvent
 | order by FailedAttempts desc
 ```
 
+### Investigation Results
 
-Analyst Observation:
+![Failed Logins by Hour](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/e1637d09b59412208cb7b6b3edf1c1ba0d7fdc9b/screenshots/query7-Failed%20Logins%20by%20Hour.png)
+
+
+### Analyst Observation:
+
 Analyzed failed login activity by time to identify brute-force or password-spraying patterns. Login spikes during unusual hours require further investigation.
 
+---
+
+## Query 8 Top Failure Reasons
+
+### Objective
+Identify the most common authentication failure reasons.
+
+```kql
+SecurityEvent
+| where TimeGenerated > ago(7d)
+| where EventID == 4625
+| summarize FailedAttempts = count() by FailureReason
+| order by FailedAttempts desc
+```
+
+### Investigation Results
+![Top Failure Reason](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/90986dbba6c05fd636c008559df1982e0ac63dea/screenshots/query8-Top%20Failure%20Reasons.png)
 
 
+### Analyst Observation:
+
+Reviewed authentication failure reasons to identify common user errors and potential attack activity. Repeated failures may indicate credential-based threats.
+
+---
+
+## Query 9 MUltiple Usernames From Same IP
+
+### Objective 
+Detect password-spraying behavior by identifying IP addresses attempting multiple user accounts.
+
+```kql
+SecurtyEvent
+| where TimeGenerated > ago(7d)
+| where EventID == 4625
+| summarize TargetedUsers = dcount (TargetAccount) by IpAddress
+| where TargetedUsers >= 5
+| order by TargetedUsers Desc
+```
+
+### Investigation Results
+
+![Multipal Usersname Same Ip](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/a2a93317f1303516f0383aa0fc663682c559931e/screenshots/query9-Multiple%20Usernames%20From%20Same%20IP.png)
 
 
+### Analyst Observation:
+Detected IP addresses attempting authentication against multiple accounts, which may indicate password spraying, credential stuffing, or compromised hosts.
+
+---
+
+## Query 10 Attacker to Target Account Mapping
+
+### Objective
+
+Map attacker IP addresses to the user accounts they attempted to authenticate against during the investigation period. This helps distinguish targeted brute-force attacks from password spraying activity.
+
+```kql
+SecurityEvent
+| where TimeGenerated > ago(7d)
+| where EventID == 4625
+| summarize FailedAttemts = count () by IpAddress, TargetAccount
+| where FailedAttemts >= 10
+| sort by failedAttemts desc
+```
+
+### Investigation Results
+
+![Attacker to target account](https://github.com/sachinpatil-soc/Microsoft-Sentinel-Lab/blob/5b83000169685b94341a93183ae9a893ae66b0dd/screenshots/query10-Attacker%20to%20Target%20Account%20Mapping.png)
 
 
+### Analyst Observations
 
+This query correlates source IP addresses with the user accounts they attempted to access. IP addresses targeting multiple accounts may indicate password spraying activity, while repeated attempts against a single account are more consistent with targeted brute-force attacks. This information provides valuable context for Tier 1 analysts when determining attack patterns and escalation requirements.
 
 
 
