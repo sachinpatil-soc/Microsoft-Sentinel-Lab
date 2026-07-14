@@ -2,6 +2,16 @@
 
 ### 🔐 Azure Honeypot | Security Monitoring | Threat Hunting | Incident Investigation | Microsoft Sentinel
 
+![Microsoft Sentinel](https://img.shields.io/badge/Microsoft-Sentinel-5C2D91?style=for-the-badge)
+
+![Azure](https://img.shields.io/badge/Microsoft-Azure-0078D4?style=for-the-badge)
+
+![KQL](https://img.shields.io/badge/KQL-0078D4?style=for-the-badge)
+
+![Windows Security Logs](https://img.shields.io/badge/Windows-Security%20Logs-0078D4?style=for-the-badge)
+
+![SOC Project](https://img.shields.io/badge/SOC-Tier%201-blue?style=for-the-badge)
+
 This project simulates a real-world Tier 1 Security Operations Center (SOC) investigation by monitoring, analyzing, documenting, and responding to Remote Desktop Protocol (RDP) brute-force attacks using Microsoft Sentinel.
 
 The objective extends beyond log collection. It follows the complete SOC investigation lifecycle—from security monitoring and alert triage to threat hunting, incident documentation, and playbook-driven response—reflecting workflows commonly used in enterprise Security Operations Centers.
